@@ -292,8 +292,23 @@ For each plan, verify:
 - [ ] Verify commands are executable
 - [ ] Done criteria are measurable
 - [ ] Context references exist
+- [ ] Tests are meaningful (see Test Quality Rules below)
 
 **If issues found:** Fix and re-verify (max 3 iterations).
+
+### Test Quality Rules
+
+Tests must verify real behavior, not just pass. Reject plans with tests that:
+
+| Anti-pattern | Example | Fix |
+|-------------|---------|-----|
+| **Mock everything** | Mocking the DB then asserting the mock was called | Use real DB or integration test |
+| **Tautological assert** | `assert mock.called` with no behavior check | Assert actual output or side effect |
+| **Always-pass test** | `assert True` or `assert response is not None` | Assert specific expected values |
+| **Testing the framework** | Asserting that Express returns 200 on a stub | Test your logic, not the framework |
+| **No negative cases** | Only testing the happy path | Include at least one failure/edge case |
+
+**Rule:** Every `<verify>` command must test the *actual behavior* of the code, not just that it runs without errors. If a test would still pass with the implementation deleted, it is not a valid test.
 
 ---
 
