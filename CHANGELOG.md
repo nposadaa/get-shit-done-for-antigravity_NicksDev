@@ -2,6 +2,19 @@
 
 All notable changes to GSD for Antigravity.
 
+## [1.0.1] - 2026-04-09
+
+### Added
+- `PLAYBOOK.md` with install, update, and fork-maintenance steps
+- Mempalace and Caveman skills as submodules under `.agents/skills/`
+
+### Changed
+- README streamlined for this fork and linked to the playbook
+- `/install` and `/update` workflows now clone this fork with `--recurse-submodules`
+- `PROJECT_RULES.md` now includes upstream-first verification guidance
+
+---
+
 ## [1.5.0] - 2026-04-01
 
 ### Breaking Changes

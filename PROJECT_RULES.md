@@ -55,6 +55,17 @@ Every change requires verification evidence:
 
 ---
 
+## Upstream Awareness
+
+Before changing behavior, update rules, or documenting guidance:
+
+1. **Check latest upstream GSD** â€” verify the current guidance in the original project.
+2. **Then check this fork** â€” confirm whether the fork already has a rule or deviation.
+
+This prevents copying outdated guidance and keeps the fork aligned with the latest upstream practices.
+
+---
+
 ## Wave Execution
 
 Plans are grouped into **waves** based on dependencies:
