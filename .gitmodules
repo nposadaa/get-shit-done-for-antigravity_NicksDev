@@ -1,0 +1,6 @@
+[submodule ".agents/skills/mempalace"]
+	path = .agents/skills/mempalace
+	url = https://github.com/milla-jovovich/mempalace.git
+[submodule ".agents/skills/caveman"]
+	path = .agents/skills/caveman
+	url = https://github.com/JuliusBrussee/caveman.git
