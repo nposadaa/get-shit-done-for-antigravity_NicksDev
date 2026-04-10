@@ -2,6 +2,17 @@
 
 All notable changes to GSD for Antigravity.
 
+## [1.1.0] - 2026-04-09
+
+### Added
+- Upstream-first verification guidance in `PROJECT_RULES.md`
+- Release tagging instructions in `PLAYBOOK.md` (annotated tags with descriptions)
+
+### Changed
+- Expanded `PLAYBOOK.md` to clarify rule transfer and updating existing project installs
+
+---
+
 ## [1.0.1] - 2026-04-09
 
 ### Added
