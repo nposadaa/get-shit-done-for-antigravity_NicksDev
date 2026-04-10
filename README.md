@@ -9,6 +9,19 @@ This repo is a personalized fork of GSD for Antigravity, tuned for my workflow a
 - Install workflow: `.agent/workflows/install.md`
 - Update workflow: `.agent/workflows/update_nicks.md`
 
+## Getting Started
+
+To install this fork into any project, open your project folder and run:
+
+```
+/install
+```
+
+When prompted, confirm you want to install from:
+`https://github.com/nposadaa/get-shit-done-for-antigravity_NicksDev`
+
+For a detailed walkthrough, including manual setup and maintenance, see [PLAYBOOK.md](PLAYBOOK.md).
+
 ## Reference
 
 This fork is based on the original GSD project. For the upstream baseline and full background, see:
