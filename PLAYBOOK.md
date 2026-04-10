@@ -154,3 +154,28 @@ Remove-Item -Recurse -Force .agents\skills\<skill-name>
 
 Upstream GSD baseline:
 - `https://github.com/glittercowboy/get-shit-done`
+
+## Part D: Create a New Release (Tag + Push)
+
+Use this after changes are committed and `CHANGELOG.md` is updated.
+
+1. Go to the fork repo root:
+
+```powershell
+cd C:\Users\nposa\IT_Projects\GSD_NicksDev\get-shit-done-for-antigravity_NicksDev
+```
+
+2. Tag the release (choose your version):
+
+```powershell
+git tag 1.0.1
+```
+
+3. Push commits and tags:
+
+```powershell
+git push
+git push --tags
+```
+
+4. Create the GitHub release from the tag (GitHub UI).
