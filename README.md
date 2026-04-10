@@ -7,7 +7,7 @@ This repo is a personalized fork of GSD for Antigravity, tuned for my workflow a
 - Playbook: `PLAYBOOK.md`
 - Project rules: `PROJECT_RULES.md`
 - Install workflow: `.agent/workflows/install.md`
-- Update workflow: `.agent/workflows/update.md`
+- Update workflow: `.agent/workflows/update_nicks.md`
 
 ## Reference
 
