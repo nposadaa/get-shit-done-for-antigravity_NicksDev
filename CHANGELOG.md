@@ -1,6 +1,19 @@
 # Changelog
 
-All notable changes to GSD for Antigravity.
+All notable changes to GSD for Antigravity (NicksDev Fork).
+
+## [1.2.0] - 2026-04-10
+
+### Added
+- New `/update_nicks` command for streamlined project updates from this fork
+- `scripts/sync-upstream.ps1` helper for safe maintainer-level syncing with original GSD
+- Migration Scenario in `PLAYBOOK.md` for switching from standard GSD to this fork
+- Part E in `PLAYBOOK.md` (Sync Fork with Upstream GSD)
+
+### Changed
+- Improved Part C in `PLAYBOOK.md` to prioritize the consolidated "Golden Master" update flow
+
+---
 
 ## [1.1.0] - 2026-04-09
 

@@ -98,12 +98,12 @@ git push
 
 ## Part C: Update GSD in an Existing Project to the Latest Fork
 
-Use this when a project already has GSD installed and you want to refresh it with your newest fork.
+Use this when a project already has GSD installed and you want to refresh it with your newest fork (which includes both original GSD updates and your custom learnings).
 
-1. In the project that needs updating, run `/update`.
+1. In the project that needs updating, run `/update_nicks`.
 2. Confirm the update when prompted.
 
-This uses `.agent/workflows/update.md`, which already points to this fork and pulls submodules.
+This uses `.agent/workflows/update_nicks.md`, which pulls from the NicksDev fork and applies consolidated improvements.
 
 ### Manual update (PowerShell)
 
@@ -114,32 +114,33 @@ cd your-project
 # Pull latest fork (with submodules)
 git clone --depth 1 --recurse-submodules https://github.com/nposadaa/get-shit-done-for-antigravity_NicksDev .gsd-update-temp
 
-# Backup current
+# Backup sensitive areas
 Copy-Item -Recurse ".agent" ".agent.backup"
 Copy-Item -Recurse ".agents" ".agents.backup"
-Copy-Item -Recurse ".gsd\\templates" ".gsd\\templates.backup"
 
-# Update workflows (preserve user's .gsd docs)
-Copy-Item -Recurse -Force ".gsd-update-temp\\.agent\\*" ".agent\\"
+# Update workflows and skills
+Copy-Item -Recurse -Force ".gsd-update-temp\.agent\*" ".agent\"
+Copy-Item -Recurse -Force ".gsd-update-temp\.agents\*" ".agents\"
 
-# Update skills
-Copy-Item -Recurse -Force ".gsd-update-temp\\.agents\\*" ".agents\\"
-
-# Update templates only
-Copy-Item -Recurse -Force ".gsd-update-temp\\.gsd\\templates\\*" ".gsd\\templates\\"
-
-# Update root files
-Copy-Item -Force ".gsd-update-temp\\GSD-STYLE.md" ".\\"
-Copy-Item -Force ".gsd-update-temp\\CHANGELOG.md" ".\\"
-Copy-Item -Force ".gsd-update-temp\\PROJECT_RULES.md" ".\\"
-Copy-Item -Force ".gsd-update-temp\\VERSION" ".\\"
+# Update core files (Golden Master)
+Copy-Item -Force ".gsd-update-temp\PROJECT_RULES.md" ".\"
+Copy-Item -Force ".gsd-update-temp\GSD-STYLE.md" ".\"
+Copy-Item -Force ".gsd-update-temp\CHANGELOG.md" ".\"
+Copy-Item -Force ".gsd-update-temp\VERSION" ".\"
 
 # Clean up
 Remove-Item -Recurse -Force ".gsd-update-temp"
 Remove-Item -Recurse -Force ".agent.backup"
 Remove-Item -Recurse -Force ".agents.backup"
-Remove-Item -Recurse -Force ".gsd\\templates.backup"
 ```
+
+## Scenario: Migrating from Standard GSD to this Fork
+
+If your project currently uses the official GSD (`glittercowboy/get-shit-done`) and you want to switch to this fork:
+
+1. **Verify your custom project state**: Ensure your `.gsd/` folder (SPEC, ROADMAP, etc.) is healthy.
+2. **Run the manual install steps**: Follow the [Manual install (PowerShell)](#manual-install-powershell) steps from Part A. Because the clone URL points to this fork, it will overwrite the official GSD files with this fork's "Golden Master" versions.
+3. **Adopt `/update_nicks`**: Once migrated, use `/update_nicks` for all future updates.
 
 ## Troubleshooting
 
@@ -179,3 +180,39 @@ git push --tags
 ```
 
 4. Create the GitHub release from the tag (GitHub UI).
+
+## Part E: Sync Fork with Upstream GSD
+
+Use this to bring in official improvements from the original GSD repository without losing your custom learnings.
+
+### 1. Run the Sync Script
+A helper script is provided to set up the upstream remote and fetch the latest changes.
+
+```powershell
+.\scripts\sync-upstream.ps1
+```
+
+### 2. Merge and Resolve Conflicts
+Merge the upstream changes into your main branch.
+
+```powershell
+git merge upstream/main
+```
+
+> [!IMPORTANT]
+> **Semantic Merge of PROJECT_RULES.md**: 
+> If `PROJECT_RULES.md` has conflicts, ensure you preserve your custom rules. If original GSD updated a core rule, merge their improvements while keeping your "Structural learnings" and "Model-agnostic" formatting.
+
+### 3. Verify and Push
+After merging and resolving conflicts, verify the fork state:
+
+```powershell
+.\scripts\validate-all.ps1
+```
+
+Then commit and push:
+```powershell
+git add .
+git commit -m "chore: sync with upstream GSD baseline"
+git push
+```
