@@ -165,10 +165,10 @@ Use this after changes are committed and `CHANGELOG.md` is updated.
 cd C:\Users\nposa\IT_Projects\GSD_NicksDev\get-shit-done-for-antigravity_NicksDev
 ```
 
-2. Tag the release (choose your version):
+2. Tag the release (choose your version). Use an annotated tag with a short description:
 
 ```powershell
-git tag 1.0.1
+git tag -a 1.0.1 -m "Release 1.0.1: playbook + submodules + fork workflows"
 ```
 
 3. Push commits and tags:

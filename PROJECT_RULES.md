@@ -18,7 +18,9 @@
 
 **Planning Lock**: No implementation code until SPEC.md contains "Status: FINALIZED".
 
----
+### Architectural Consciousness Clause
+1. **Synchronized Documentation**: You may NOT adjust the architecture of the application without synchronously documenting the change in `DECISIONS.md`. 
+2. **Impact Awareness**: Before modifying any script that shares execution environments (e.g. Cron vs Local interactive), explicitly evaluate how the change affects *both* environments before acting. Avoid impulsive patches (like hard `sys.exit`s) that break secondary workflows.
 
 ## Proof Requirements
 
@@ -52,17 +54,6 @@ Every change requires verification evidence:
 - Prevents reading irrelevant code
 
 **Anti-pattern**: Reading entire files "to understand the context" without searching first.
-
----
-
-## Upstream Awareness
-
-Before changing behavior, update rules, or documenting guidance:
-
-1. **Check latest upstream GSD** â€” verify the current guidance in the original project.
-2. **Then check this fork** â€” confirm whether the fork already has a rule or deviation.
-
-This prevents copying outdated guidance and keeps the fork aligned with the latest upstream practices.
 
 ---
 
@@ -162,6 +153,7 @@ type(scope): description
 - One task = one commit
 - Verify before commit
 - Scope = phase number for phase work (e.g., `feat(phase-1): ...`)
+- **Decision gate**: Any commit that introduces a technical decision (new approach, tool choice, architecture change, workaround) MUST have a matching `DEC-NNN` entry in `.gsd/DECISIONS.md` committed in the same or prior commit. No exceptions.
 
 ---
 
@@ -263,6 +255,7 @@ After each task  → Commit + update STATE.md
 After each wave  → State snapshot
 After 3 failures → State dump + fresh session
 Before "Done"    → Empirical proof captured
+Before commit    → If decision made → DEC-NNN in DECISIONS.md
 ```
 
 ---
